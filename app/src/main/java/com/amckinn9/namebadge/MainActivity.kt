@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
@@ -36,10 +35,11 @@ fun NameBadgeInfo() {
         )
         Text(text = "COMPUTER SCIENCE")
         Text(text = "Senior")
-        Row {
-            Text(text = "GitHub-")
-            Text(text = "LinkedIn")
-            Text(text = "Email")
+        Column {
+            Text(text = "GitHub: @ashmicmck1")
+            Text(text = "Email: amckinn9@xula.edu")
+            Text(text = "LinkedIn: https://www.linkedin.com/in/ashleigh-mckinney-b3b73722a/ ")
+
         }
     }
 }

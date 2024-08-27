@@ -32,14 +32,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             NameBadgeTheme {
-                NameBadgeInfo()
+                NameBadge()
             }
         }
     }
 }
 
 @Composable
-fun NameBadgeInfo() {
+fun NameBadge() {
     //Outer Frame
     Column(
         modifier = Modifier
@@ -48,8 +48,10 @@ fun NameBadgeInfo() {
                 translationX = 1f,  // Adjust position horizontally
                 translationY = -1f   // Adjust position vertically
             )
-            .border(width = 1.dp,
-                color = MaterialTheme.colorScheme.primary),
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.primary
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
 
@@ -57,8 +59,10 @@ fun NameBadgeInfo() {
         //Inner Frame
         Column( modifier = Modifier
             .padding(6.dp)
-            .border(width = 1.dp,
-                    color = MaterialTheme.colorScheme.secondary)
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.secondary
+            )
             .scale(.85f),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
@@ -71,26 +75,39 @@ fun NameBadgeInfo() {
             )
             Text(text = "McKinney",
                 fontSize = 40.sp,
-                fontWeight = FontWeight.Bold)
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(bottom = 15.dp))
             BadgePhoto()
-            Text(text = "COMPUTER SCIENCE",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold)
-            Text(text = "Senior",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold)
-            Text(text = "GitHub: @ashmicmck1",
-                fontSize = 12.sp,
-                style = MaterialTheme.typography.bodySmall)
-            Text(text = "Email: amckinn9@xula.edu",
-                fontSize = 12.sp,
-                style = MaterialTheme.typography.bodySmall)
-            Text(text = "LinkedIn: https://www.linkedin.com/in/ashleigh-mckinney-b3b73722a/ ",
-                fontSize = 12.sp,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodySmall)
+            BoldBodyText(text = "COMPUTER SCIENCE",
+                modifier = Modifier
+                    .padding(top = 20.dp))
+            BoldBodyText(text = "Senior",
+                modifier = Modifier
+                    .padding(bottom = 15.dp))
+            BodyText("GitHub: @ashmicmck1")
+            BodyText("Email: amckinn9@xula.edu")
+            BodyText("LinkedIn: https://www.linkedin.com/in/ashleigh-mckinney-b3b73722a/ ",
+                textAlign = TextAlign.Center)
         }
     }
+}
+
+@Composable
+fun BoldBodyText(text: String, modifier :Modifier = Modifier) {
+    Text(text= text,
+        modifier = modifier,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold)
+}
+
+@Composable
+fun BodyText(text: String, textAlign: TextAlign = TextAlign.Left) {
+    Text(text= text,
+        textAlign = textAlign,
+        fontSize = 12.sp,
+        style = MaterialTheme.typography.bodySmall)
+
 }
 
 @Composable
@@ -105,7 +122,6 @@ fun BadgePhoto() {
             contentDescription = "Badge picture",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-//                .size(279.dp)
                 .clip(CircleShape)
         )
     }
@@ -116,6 +132,6 @@ fun BadgePhoto() {
 @Composable
 fun NameBadgePreview() {
     NameBadgeTheme {
-        NameBadgeInfo()
+        NameBadge()
     }
 }
